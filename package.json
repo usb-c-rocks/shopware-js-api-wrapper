@@ -1,0 +1,38 @@
+{
+  "name": "shopware-api-client",
+  "version": "0.0.0",
+  "description": "An API client for shopware 6",
+  "license": "MIT",
+  "contributors": [
+    {
+      "name": "Lennart Zellmer <lennart+git@zellmer.dev>"
+    }
+  ],
+  "files": [
+    "lib"
+  ],
+  "main": "lib/module.js",
+  "scripts": {
+    "build": "webpack --mode production",
+    "dev": "webpack-dev-server --mode development --progress --color"
+  },
+  "dependencies": {
+    "axios": "^0.19.2"
+  },
+  "peerDependencies": {
+    "axios": "^0.19.2",
+    "https": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^10.12.21",
+    "prettier": "^1.16.1",
+    "ts-loader": "^7.0.5",
+    "typescript": "^3.2.4",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
