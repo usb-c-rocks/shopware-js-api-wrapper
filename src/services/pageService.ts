@@ -1,5 +1,5 @@
-import { getPageResolverEndpoint } from "../endpoints";
-import { defaultInstance, ShopwareApiInstance } from "../apiService";
+import { getPageResolverEndpoint } from "../settings/endpoints";
+import { defaultInstance, ShopwareApiInstance } from "./apiService";
 import { SearchCriteria } from "@shopware-api-client/commons/interfaces/search/SearchCriteria";
 import { CmsPage } from "@shopware-api-client/commons/interfaces/models/content/cms/CmsPage";
 import { convertSearchCriteria } from "../helpers/searchConverter";

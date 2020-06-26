@@ -13,7 +13,7 @@
   ],
   "main": "lib/module.js",
   "scripts": {
-    "build": "webpack --mode production",
+    "build": "rollup -c",
     "dev": "webpack-dev-server --mode development --progress --color"
   },
   "dependencies": {
@@ -24,13 +24,15 @@
     "https": "^1.0.0"
   },
   "devDependencies": {
+    "@rollup/plugin-alias": "^3.1.1",
+    "@rollup/plugin-multi-entry": "^3.0.1",
     "@types/node": "^10.12.21",
     "prettier": "^1.16.1",
-    "ts-loader": "^7.0.5",
-    "typescript": "^3.2.4",
-    "webpack": "^4.43.0",
-    "webpack-cli": "^3.3.12",
-    "webpack-dev-server": "^3.11.0"
+    "rollup": "^2.18.0",
+    "rollup-plugin-typescript-paths": "^1.2.2",
+    "rollup-plugin-typescript2": "^0.27.1",
+    "tslib": "^2.0.0",
+    "typescript": "^3.9.5"
   },
   "publishConfig": {
     "access": "public"

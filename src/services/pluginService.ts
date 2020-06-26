@@ -1,4 +1,4 @@
-import { defaultInstance, ShopwareApiInstance } from "../apiService";
+import { defaultInstance, ShopwareApiInstance } from "./apiService";
 
 /**
  * Invoke custom POST request to shopware API. Mostly for plugins usage.

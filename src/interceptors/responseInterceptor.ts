@@ -1,6 +1,6 @@
 import { AxiosResponse, AxiosRequestConfig } from "axios";
 import { extractContextToken } from "../helpers/context";
-import { ClientSettings } from "../settings";
+import { ClientSettings } from "../settings/settings";
 
 export function createResponseInterceptor(
   update: (

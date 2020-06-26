@@ -4,8 +4,8 @@ import {
   getCheckoutCartProductEndpoint,
   getCheckoutPromotionCodeEndpoint,
   getCheckoutCartLineItemEndpoint,
-} from "../endpoints";
-import { defaultInstance, ShopwareApiInstance } from "../apiService";
+} from "../settings/endpoints";
+import { defaultInstance, ShopwareApiInstance } from "./apiService";
 import { ContextTokenResponse } from "@shopware-api-client/commons/interfaces/response/SessionContext";
 import { CartItemType } from "@shopware-api-client/commons/interfaces/cart/CartItemType";
 

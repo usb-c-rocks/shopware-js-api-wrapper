@@ -11,9 +11,9 @@ import {
   getCustomerLogoutEndpoint,
   getCustomerLoginEndpoint,
   getCustomerOrderEndpoint,
-} from "../endpoints";
+} from "../settings/endpoints";
 import { Customer } from "@shopware-api-client/commons/interfaces/models/checkout/customer/Customer";
-import { defaultInstance, ShopwareApiInstance } from "../apiService";
+import { defaultInstance, ShopwareApiInstance } from "./apiService";
 import { CustomerAddress } from "@shopware-api-client/commons/interfaces/models/checkout/customer/CustomerAddress";
 import { CustomerRegistrationParams } from "@shopware-api-client/commons/interfaces/request/CustomerRegistrationParams";
 import { ContextTokenResponse } from "@shopware-api-client/commons/interfaces/response/SessionContext";

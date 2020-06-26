@@ -1,5 +1,5 @@
 import { Currency } from "@shopware-api-client/commons/interfaces/models/system/currency/Currency";
-import { defaultInstance, ShopwareApiInstance } from "../apiService";
+import { defaultInstance, ShopwareApiInstance } from "./apiService";
 import {
   getContextCurrencyEndpoint,
   getContextCountryEndpoint,
@@ -12,7 +12,7 @@ import {
   getContextSalutationItemEndpoint,
   getContextPaymentMethodDetailsEndpoint,
   getContextShippingMethodDetailsEndpoint,
-} from "../endpoints";
+} from "../settings/endpoints";
 import { Country } from "@shopware-api-client/commons/interfaces/models/system/country/Country";
 import { ShippingMethod } from "@shopware-api-client/commons/interfaces/models/checkout/shipping/ShippingMethod";
 import { PaymentMethod } from "@shopware-api-client/commons/interfaces/models/checkout/payment/PaymentMethod";

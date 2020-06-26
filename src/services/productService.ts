@@ -3,13 +3,13 @@ import {
   getProductDetailsEndpoint,
   getProductsIdsEndpoint,
   getProductListingEndpoint,
-} from "../endpoints";
+} from "../settings/endpoints";
 import { ProductListingResult } from "@shopware-api-client/commons/interfaces/response/ProductListingResult";
 import { Product } from "@shopware-api-client/commons/interfaces/models/content/product/Product";
 import { SearchCriteria } from "@shopware-api-client/commons/interfaces/search/SearchCriteria";
 import { SearchResult } from "@shopware-api-client/commons/interfaces/response/SearchResult";
 import { convertSearchCriteria, ApiType } from "../helpers/searchConverter";
-import { defaultInstance, ShopwareApiInstance } from "../apiService";
+import { defaultInstance, ShopwareApiInstance } from "./apiService";
 
 /**
  * Get default amount of products' ids
