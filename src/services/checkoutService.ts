@@ -1,9 +1,9 @@
-import { defaultInstance, ShopwareApiInstance } from "./apiService";
+import { defaultInstance, ShopwareApiInstance } from "../apiService";
 import {
   getCheckoutOrderEndpoint,
   getCheckoutGuestOrderEndpoint,
   getOrderPaymentUrlEndpoint,
-} from "../settings/endpoints";
+} from "../endpoints";
 import { Order } from "@shopware-api-client/commons/interfaces/models/checkout/order/Order";
 import { GuestOrderParams } from "@shopware-api-client/commons/interfaces/request/GuestOrderParams";
 

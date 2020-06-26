@@ -10,10 +10,10 @@ import { SalesChannel } from "../sales-channel/SalesChannel";
 export interface Country {
   active: boolean;
   createdAt: string;
-  customFields: object | null;
+  customFields: Record<string, unknown> | null;
   name: string | null;
   iso: string | null;
-  translated: object;
+  translated: Record<string, unknown>;
   updatedAt: string | null;
   versionId: string | null;
   id: string;

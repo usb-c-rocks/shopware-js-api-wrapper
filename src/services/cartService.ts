@@ -4,8 +4,8 @@ import {
   getCheckoutCartProductEndpoint,
   getCheckoutPromotionCodeEndpoint,
   getCheckoutCartLineItemEndpoint,
-} from "../settings/endpoints";
-import { defaultInstance, ShopwareApiInstance } from "./apiService";
+} from "../endpoints";
+import { defaultInstance, ShopwareApiInstance } from "../apiService";
 import { ContextTokenResponse } from "@shopware-api-client/commons/interfaces/response/SessionContext";
 import { CartItemType } from "@shopware-api-client/commons/interfaces/cart/CartItemType";
 
@@ -24,7 +24,7 @@ export async function clearCart(
   contextInstance: ShopwareApiInstance = defaultInstance
 ): Promise<ContextTokenResponse> {
   const resp = await contextInstance.invoke.post(getCheckoutCartEndpoint());
-  let contextToken = resp.data["sw-context-token"];
+  const contextToken = resp.data["sw-context-token"];
   return { contextToken };
 }
 
@@ -76,7 +76,7 @@ export async function addCartItemQuantity(
   quantity: number,
   contextInstance: ShopwareApiInstance = defaultInstance
 ): Promise<Cart> {
-  let params = { type: CartItemType.PRODUCT, quantity: quantity };
+  const params = { type: CartItemType.PRODUCT, quantity: quantity };
   const resp = await contextInstance.invoke.post(
     getCheckoutCartLineItemEndpoint(itemId),
     params
@@ -95,10 +95,10 @@ export async function addCartItemQuantity(
  */
 export async function changeCartItemQuantity(
   itemId: string,
-  newQuantity: number = 1,
+  newQuantity = 1,
   contextInstance: ShopwareApiInstance = defaultInstance
 ): Promise<Cart> {
-  let params = { quantity: parseInt(newQuantity.toString(), 10) };
+  const params = { quantity: parseInt(newQuantity.toString(), 10) };
   const resp = await contextInstance.invoke.patch(
     getCheckoutCartLineItemEndpoint(itemId),
     params

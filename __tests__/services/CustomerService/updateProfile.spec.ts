@@ -1,0 +1,38 @@
+import { name, random } from "faker";
+import { defaultInstance } from "../../../src/apiService";
+import { updateProfile } from "@shopware-api-client";
+import { getCustomerDetailsUpdateEndpoint } from "../../../src/endpoints";
+
+const customerData = {
+  salutationId: random.uuid(),
+  firstName: name.firstName(),
+  lastName: name.lastName(),
+  title: "d",
+};
+
+jest.mock("../../../src/apiService");
+const mockedApiInstance = defaultInstance as jest.Mocked<
+  typeof defaultInstance
+>;
+
+describe("CustomerService - updateProfile", () => {
+  const mockedPost = jest.fn();
+  beforeEach(() => {
+    jest.resetAllMocks();
+    mockedApiInstance.invoke = {
+      post: mockedPost,
+    } as any;
+  });
+
+  it("returns no data if successfully updated", async () => {
+    mockedPost.mockResolvedValueOnce(null);
+    const result = await updateProfile(customerData);
+
+    expect(result).toBeFalsy();
+    expect(mockedPost).toBeCalledTimes(1);
+    expect(mockedPost).toBeCalledWith(
+      getCustomerDetailsUpdateEndpoint(),
+      customerData
+    );
+  });
+});

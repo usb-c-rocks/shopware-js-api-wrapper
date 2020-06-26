@@ -11,10 +11,13 @@
   "files": [
     "lib"
   ],
-  "main": "lib/module.js",
+  "main": "lib/index.js",
+  "types": "lib/src/index.d.ts",
   "scripts": {
     "build": "rollup -c",
-    "dev": "webpack-dev-server --mode development --progress --color"
+    "dev": "webpack-dev-server --mode development --progress --color",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "test": "jest"
   },
   "dependencies": {
     "axios": "^0.19.2"
@@ -26,11 +29,20 @@
   "devDependencies": {
     "@rollup/plugin-alias": "^3.1.1",
     "@rollup/plugin-multi-entry": "^3.0.1",
+    "@types/faker": "^4.1.12",
+    "@types/jest": "^26.0.3",
     "@types/node": "^10.12.21",
+    "@typescript-eslint/eslint-plugin": "^3.4.0",
+    "@typescript-eslint/parser": "^3.4.0",
+    "eslint": "^7.3.1",
+    "eslint-plugin-jest": "^23.17.1",
+    "faker": "^4.1.0",
+    "jest": "^26.1.0",
     "prettier": "^1.16.1",
     "rollup": "^2.18.0",
     "rollup-plugin-typescript-paths": "^1.2.2",
     "rollup-plugin-typescript2": "^0.27.1",
+    "ts-jest": "^26.1.1",
     "tslib": "^2.0.0",
     "typescript": "^3.9.5"
   },

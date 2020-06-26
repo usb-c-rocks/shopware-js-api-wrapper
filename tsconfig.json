@@ -22,10 +22,13 @@
     "declarationMap": true,
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "baseUrl": "./src",
+    "baseUrl": ".",
     "paths": {
+      "@shopware-api-client": [
+        "./src"
+      ],
       "@shopware-api-client/*": [
-        "*"
+        "./src/*"
       ]
     },
     "plugins": [
@@ -33,7 +36,8 @@
       { "transform": "typescript-transform-paths", "afterDeclarations": true }
     ],
     "types": [
-      "node"
+      "node",
+      "jest"
     ]
   },
   "include": ["src/**/*"]

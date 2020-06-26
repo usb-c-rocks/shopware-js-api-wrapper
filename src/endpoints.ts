@@ -145,6 +145,10 @@ export const getNewsletterSubscribeEndpoint = () => `/newsletter/subscribe`;
 export const getNewsletterUnsubscribeEndpoint = () => `/newsletter/unsubscribe`;
 
 export const getPageResolverEndpoint = () => `/store-api/v1/pwa/page`;
-export const getNavigationEndpoint = () => `/store-api/v1/pwa/navigation`;
+
+export const getNavigationEndpoint = (
+  navigationType: string
+): string => `/store-api/v1/navigation/${navigationType}/${navigationType}`;
+
 export const getOrderPaymentUrlEndpoint = (orderId: string): string =>
   `/sales-channel-api/v1/checkout/order/${orderId}/pay`;

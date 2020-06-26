@@ -1,5 +1,5 @@
-import { getNavigationEndpoint } from "../settings/endpoints";
-import { defaultInstance, ShopwareApiInstance } from "./apiService";
+import { getNavigationEndpoint } from "../endpoints";
+import { defaultInstance, ShopwareApiInstance } from "../apiService";
 import { NavigationResponse } from "@shopware-api-client/commons/interfaces/models/content/navigation/Navigation";
 
 /**
@@ -7,7 +7,15 @@ import { NavigationResponse } from "@shopware-api-client/commons/interfaces/mode
  */
 export interface GetNavigationParams {
   depth: number;
-  rootNode?: string;
+  includes?: GetNavigationIncludes,
+  buildTree?: boolean
+}
+
+/**
+ * @alpha
+ */
+export interface GetNavigationIncludes {
+  category: Array<string>;
 }
 /**
  * @throws ClientApiError
@@ -15,10 +23,11 @@ export interface GetNavigationParams {
  */
 export async function getNavigation(
   params: GetNavigationParams,
+  navigationType: string,
   contextInstance: ShopwareApiInstance = defaultInstance
 ): Promise<NavigationResponse> {
   const resp = await contextInstance.invoke.post(
-    getNavigationEndpoint(),
+    getNavigationEndpoint(navigationType),
     params
   );
 

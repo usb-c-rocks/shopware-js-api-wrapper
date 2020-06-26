@@ -11,7 +11,7 @@ import { PaginationLimit } from "../commons/interfaces/search/Pagination";
 import { ShopwareAssociation } from "@shopware-api-client/commons/interfaces/search/Association";
 import { Grouping } from "@shopware-api-client/commons/interfaces/search/Grouping";
 import { convertToStoreApiFilters } from "../helpers/convertToStoreApiFilters";
-import { ClientSettings } from "../settings/settings";
+import { ClientSettings } from "../settings";
 
 export enum ApiType {
   store = "store-api",
@@ -78,10 +78,10 @@ export const convertSearchCriteria = ({
   if (sort) {
     // exception for store-api
     if (apiType && apiType === ApiType.store) {
-      let order = sort.desc ? "desc" : "asc";
+      const order = sort.desc ? "desc" : "asc";
       params.sort = `${sort.field}-${order}`;
     } else {
-      let prefix = sort.desc ? "-" : "";
+      const prefix = sort.desc ? "-" : "";
       params.sort = `${prefix}${sort.field}`;
     }
   }

@@ -1,11 +1,11 @@
-import { defaultInstance, ConfigChangedArgs } from "./services/apiService";
-import { ClientSettings } from "./settings/settings";
-export { ClientSettings } from "./settings/settings";
+import { defaultInstance, ConfigChangedArgs } from "./apiService";
+import { ClientSettings } from "./settings";
+export { ClientSettings } from "./settings";
 export {
   createInstance,
   ConfigChangedArgs,
   ShopwareApiInstance,
-} from "./services/apiService";
+} from "./apiService";
 
 export * from "./services/categoryService";
 export * from "./services/productService";

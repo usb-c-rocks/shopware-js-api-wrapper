@@ -1,8 +1,8 @@
 import { Category } from "@shopware-api-client/commons/interfaces/models/content/category/Category";
-import { getCategoryEndpoint, getCategoryDetailsEndpoint } from "../settings/endpoints";
+import { getCategoryEndpoint, getCategoryDetailsEndpoint } from "../endpoints";
 import { convertSearchCriteria } from "../helpers/searchConverter";
 import { SearchResult } from "@shopware-api-client/commons/interfaces/response/SearchResult";
-import { defaultInstance, ShopwareApiInstance } from "./apiService";
+import { defaultInstance, ShopwareApiInstance } from "../apiService";
 import { SearchCriteria } from "@shopware-api-client/commons/interfaces/search/SearchCriteria";
 
 /**

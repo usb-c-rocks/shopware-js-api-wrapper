@@ -3,4 +3,4 @@ import { CustomerAddress } from "./CustomerAddress";
 /**
  * @alpha
  */
-export interface BillingAddress extends CustomerAddress {}
+export type BillingAddress = CustomerAddress

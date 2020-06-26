@@ -1,5 +1,5 @@
 import { Currency } from "@shopware-api-client/commons/interfaces/models/system/currency/Currency";
-import { defaultInstance, ShopwareApiInstance } from "./apiService";
+import { defaultInstance, ShopwareApiInstance } from "../apiService";
 import {
   getContextCurrencyEndpoint,
   getContextCountryEndpoint,
@@ -12,7 +12,7 @@ import {
   getContextSalutationItemEndpoint,
   getContextPaymentMethodDetailsEndpoint,
   getContextShippingMethodDetailsEndpoint,
-} from "../settings/endpoints";
+} from "../endpoints";
 import { Country } from "@shopware-api-client/commons/interfaces/models/system/country/Country";
 import { ShippingMethod } from "@shopware-api-client/commons/interfaces/models/checkout/shipping/ShippingMethod";
 import { PaymentMethod } from "@shopware-api-client/commons/interfaces/models/checkout/payment/PaymentMethod";
@@ -96,7 +96,7 @@ export async function setCurrentCurrency(
   newCurrencyID: string,
   contextInstance: ShopwareApiInstance = defaultInstance
 ): Promise<ContextTokenResponse> {
-  let params = { currencyId: newCurrencyID };
+  const params = { currencyId: newCurrencyID };
   const resp = await updateContext(params, contextInstance);
 
   return resp;
@@ -122,7 +122,7 @@ export async function setCurrentLanguage(
   newLanguageId: string,
   contextInstance: ShopwareApiInstance = defaultInstance
 ): Promise<ContextTokenResponse> {
-  let params = { languageId: newLanguageId };
+  const params = { languageId: newLanguageId };
   const resp = await updateContext(params, contextInstance);
 
   return resp;
@@ -191,7 +191,7 @@ export async function setCurrentPaymentMethod(
   newPaymentMethodId: string,
   contextInstance: ShopwareApiInstance = defaultInstance
 ): Promise<ContextTokenResponse> {
-  let params = { paymentMethodId: newPaymentMethodId };
+  const params = { paymentMethodId: newPaymentMethodId };
   const resp = await updateContext(params, contextInstance);
 
   return resp;
@@ -234,7 +234,7 @@ export async function setCurrentShippingMethod(
   newShippingMethodId: string,
   contextInstance: ShopwareApiInstance = defaultInstance
 ): Promise<ContextTokenResponse> {
-  let params = { shippingMethodId: newShippingMethodId };
+  const params = { shippingMethodId: newShippingMethodId };
   const resp = await updateContext(params, contextInstance);
 
   return resp;

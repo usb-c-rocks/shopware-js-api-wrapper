@@ -7,7 +7,7 @@ export function convertAssociations(
   associations: Association[] = []
 ): ShopwareAssociation | undefined {
   if (!Array.isArray(associations) || !associations.length) return;
-  let shopwareAssociations: ShopwareAssociation = {};
+  const shopwareAssociations: ShopwareAssociation = {};
   associations.forEach((association) => {
     shopwareAssociations[association.name] = association.associations
       ? {

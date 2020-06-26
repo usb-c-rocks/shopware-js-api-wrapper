@@ -5,7 +5,7 @@ import {
 
 const concatIds = (ids: string[]) => ids.join("|");
 const isFilterForProperty = (property: string, filter: any) =>
-  filter.hasOwnProperty("field") && filter.field === property;
+  Object.prototype.hasOwnProperty.call(filter, "field") && filter.field === property;
 
 interface StoreApiListingFilters {
   manufacturer?: string;
@@ -24,7 +24,7 @@ interface GenericFilter extends SearchFilter {
 export function convertToStoreApiFilters(
   filters: Array<GenericFilter>
 ): StoreApiListingFilters {
-  let params: StoreApiListingFilters = {};
+  const params: StoreApiListingFilters = {};
 
   if (!filters || !filters.length) {
     return {};
