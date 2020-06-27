@@ -7,7 +7,7 @@ import {
   LtGteRangeFilter,
   LteGtRangeFilter,
   LteGteRangeFilter,
-} from "@shopware-api-client/commons/interfaces/search/RangeFilters";
+} from "@shopware-api-wrapper/commons/interfaces/search/RangeFilters";
 
 export enum SearchFilterType {
   EQUALS = "equals",

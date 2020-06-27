@@ -1,5 +1,5 @@
 import { name, address, random, phone, internet } from "faker";
-import { register } from "@shopware-api-client";
+import { register } from "@shopware-api-wrapper";
 import { getCustomerRegisterEndpoint } from "../../../src/endpoints";
 import { defaultInstance } from "../../../src/apiService";
 import { CustomerRegistrationParams } from "../../../src/commons/interfaces/request/CustomerRegistrationParams";

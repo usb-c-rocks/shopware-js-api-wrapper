@@ -1,5 +1,5 @@
-import { Country } from "@shopware-api-client/commons/interfaces/models/system/country/Country";
-import { CustomField } from "@shopware-api-client/commons/interfaces/models/common/CustomField";
+import { Country } from "@shopware-api-wrapper/commons/interfaces/models/system/country/Country";
+import { CustomField } from "@shopware-api-wrapper/commons/interfaces/models/common/CustomField";
 
 export enum AddressType {
   billing = "billing",

@@ -24,10 +24,10 @@
     "esModuleInterop": true,
     "baseUrl": ".",
     "paths": {
-      "@shopware-api-client": [
+      "@shopware-api-wrapper": [
         "./src"
       ],
-      "@shopware-api-client/*": [
+      "@shopware-api-wrapper/*": [
         "./src/*"
       ]
     },

@@ -1,7 +1,7 @@
 import {
   SearchFilter,
   SearchFilterType,
-} from "@shopware-api-client/commons/interfaces/search/SearchFilter";
+} from "@shopware-api-wrapper/commons/interfaces/search/SearchFilter";
 
 const concatIds = (ids: string[]) => ids.join("|");
 const isFilterForProperty = (property: string, filter: any) =>

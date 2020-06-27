@@ -4,10 +4,10 @@ import {
   getProductsIdsEndpoint,
   getProductListingEndpoint,
 } from "../endpoints";
-import { ProductListingResult } from "@shopware-api-client/commons/interfaces/response/ProductListingResult";
-import { Product } from "@shopware-api-client/commons/interfaces/models/content/product/Product";
-import { SearchCriteria } from "@shopware-api-client/commons/interfaces/search/SearchCriteria";
-import { SearchResult } from "@shopware-api-client/commons/interfaces/response/SearchResult";
+import { ProductListingResult } from "@shopware-api-wrapper/commons/interfaces/response/ProductListingResult";
+import { Product } from "@shopware-api-wrapper/commons/interfaces/models/content/product/Product";
+import { SearchCriteria } from "@shopware-api-wrapper/commons/interfaces/search/SearchCriteria";
+import { SearchResult } from "@shopware-api-wrapper/commons/interfaces/response/SearchResult";
 import { convertSearchCriteria, ApiType } from "../helpers/searchConverter";
 import { defaultInstance, ShopwareApiInstance } from "../apiService";
 

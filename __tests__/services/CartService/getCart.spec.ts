@@ -1,4 +1,4 @@
-import { getCart } from "@shopware-api-client";
+import { getCart } from "@shopware-api-wrapper";
 import { defaultInstance } from "../../../src/apiService";
 import { random, commerce } from "faker";
 

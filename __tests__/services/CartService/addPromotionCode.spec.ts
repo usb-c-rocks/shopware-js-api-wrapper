@@ -1,4 +1,4 @@
-import { addPromotionCode } from "@shopware-api-client";
+import { addPromotionCode } from "@shopware-api-wrapper";
 import { defaultInstance } from "../../../src/apiService";
 import { random } from "faker";
 

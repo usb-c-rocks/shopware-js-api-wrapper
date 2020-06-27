@@ -1,13 +1,13 @@
-import { CustomerAddress } from "@shopware-api-client/commons/interfaces/models/checkout/customer/CustomerAddress";
-import { OrderLineItem } from "@shopware-api-client/commons/interfaces/models/checkout/order/OrderLineItem";
-import { StateMachineState } from "@shopware-api-client/commons/interfaces/models/system/state-machine/StateMachineState";
+import { CustomerAddress } from "@shopware-api-wrapper/commons/interfaces/models/checkout/customer/CustomerAddress";
+import { OrderLineItem } from "@shopware-api-wrapper/commons/interfaces/models/checkout/order/OrderLineItem";
+import { StateMachineState } from "@shopware-api-wrapper/commons/interfaces/models/system/state-machine/StateMachineState";
 import { OrderTransaction } from "./OrderTransaction";
-import { Tag } from "@shopware-api-client/commons/interfaces/models/system/tag/Tag";
-import { Currency } from "@shopware-api-client/commons/interfaces/models/system/currency/Currency";
-import { Language } from "@shopware-api-client/commons/interfaces/models/framework/language/Language";
-import { SalesChannel } from "@shopware-api-client/commons/interfaces/models/system/sales-channel/SalesChannel";
-import { CustomFields } from "@shopware-api-client/commons/interfaces/models/common/CustomField";
-import { Delivery } from "@shopware-api-client/commons/interfaces/models/checkout/delivery/Delivery";
+import { Tag } from "@shopware-api-wrapper/commons/interfaces/models/system/tag/Tag";
+import { Currency } from "@shopware-api-wrapper/commons/interfaces/models/system/currency/Currency";
+import { Language } from "@shopware-api-wrapper/commons/interfaces/models/framework/language/Language";
+import { SalesChannel } from "@shopware-api-wrapper/commons/interfaces/models/system/sales-channel/SalesChannel";
+import { CustomFields } from "@shopware-api-wrapper/commons/interfaces/models/common/CustomField";
+import { Delivery } from "@shopware-api-wrapper/commons/interfaces/models/checkout/delivery/Delivery";
 
 interface CalculatedTax {
   tax: number;

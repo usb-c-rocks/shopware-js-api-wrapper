@@ -1,7 +1,7 @@
 import { getCustomerUpdateEmailEndpoint } from "../../../src/endpoints";
 import { defaultInstance } from "../../../src/apiService";
 import { internet } from "faker";
-import { updateEmail } from "@shopware-api-client";
+import { updateEmail } from "@shopware-api-wrapper";
 
 const credentials = {
   email: internet.email(),

@@ -1,4 +1,4 @@
-import {getNavigation, NavigationType} from "@shopware-api-client";
+import {getNavigation, NavigationType} from "@shopware-api-wrapper";
 import { defaultInstance } from "../../../src/apiService";
 
 jest.mock("../../../src/apiService");

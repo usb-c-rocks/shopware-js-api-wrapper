@@ -1,4 +1,4 @@
-# shopware-api-client
+# shopware-api-wrapper
 
 [![npm version][npm-version-src]][npm-version-href]
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
@@ -6,28 +6,28 @@
 [![Codecov][codecov-src]][codecov-href]
 [![License][license-src]][license-href]
 
-> An API client for shopware 6
+> An API wrapper for shopware 6 store and SalesChannel api
 
 [📖 **Release Notes**](./CHANGELOG.md)
 
 ## Setup
 
-1. Add `shopware-api-client` dependency to your project
+1. Add `shopware-api-wrapper` dependency to your project
 
 ```bash
-yarn add shopware-api-client # or npm install shopware-api-client
+yarn add shopware-api-wrapper # or npm install shopware-api-wrapper
 ```
 
-2. Add `shopware-api-client` to the `modules` section of `nuxt.config.js`
+2. Add `shopware-api-wrapper` to the `modules` section of `nuxt.config.js`
 
 ```js
 {
   modules: [
     // Simple usage
-    'shopware-api-client',
+    'shopware-api-wrapper',
 
     // With options
-    ['shopware-api-client', { /* module options */ }]
+    ['shopware-api-wrapper', { /* module options */ }]
   ]
 }
 ```
@@ -45,11 +45,11 @@ yarn add shopware-api-client # or npm install shopware-api-client
 Copyright (c) Lennart Zellmer <lennart+git@zellmer.dev>
 
 <!-- Badges -->
-[npm-version-src]: https://img.shields.io/npm/v/shopware-api-client/latest.svg
-[npm-version-href]: https://npmjs.com/package/shopware-api-client
+[npm-version-src]: https://img.shields.io/npm/v/shopware-api-wrapper/latest.svg
+[npm-version-href]: https://npmjs.com/package/shopware-api-wrapper
 
-[npm-downloads-src]: https://img.shields.io/npm/dt/shopware-api-client.svg
-[npm-downloads-href]: https://npmjs.com/package/shopware-api-client
+[npm-downloads-src]: https://img.shields.io/npm/dt/shopware-api-wrapper.svg
+[npm-downloads-href]: https://npmjs.com/package/shopware-api-wrapper
 
 [github-actions-ci-src]: https://github.com//workflows/ci/badge.svg
 [github-actions-ci-href]: https://github.com//actions?query=workflow%3Aci
@@ -57,5 +57,5 @@ Copyright (c) Lennart Zellmer <lennart+git@zellmer.dev>
 [codecov-src]: https://img.shields.io/codecov/c/github/.svg
 [codecov-href]: https://codecov.io/gh/
 
-[license-src]: https://img.shields.io/npm/l/shopware-api-client.svg
-[license-href]: https://npmjs.com/package/shopware-api-client
+[license-src]: https://img.shields.io/npm/l/shopware-api-wrapper.svg
+[license-href]: https://npmjs.com/package/shopware-api-wrapper

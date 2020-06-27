@@ -1,7 +1,7 @@
 import { getCustomerResetPasswordEndpoint } from "../../../src/endpoints";
 import { defaultInstance } from "../../../src/apiService";
 import { internet } from "faker";
-import { resetPassword, config } from "@shopware-api-client";
+import { resetPassword, config } from "@shopware-api-wrapper";
 
 const DEFAULT_ENDPOINT = "https://shopware-2.vuestorefront.io";
 const email = internet.email("John", "Doe");

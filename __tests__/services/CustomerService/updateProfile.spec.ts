@@ -1,6 +1,6 @@
 import { name, random } from "faker";
 import { defaultInstance } from "../../../src/apiService";
-import { updateProfile } from "@shopware-api-client";
+import { updateProfile } from "@shopware-api-wrapper";
 import { getCustomerDetailsUpdateEndpoint } from "../../../src/endpoints";
 
 const customerData = {

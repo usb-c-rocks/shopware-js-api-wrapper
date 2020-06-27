@@ -1,7 +1,7 @@
 import { getCustomerUpdatePasswordEndpoint } from "../../../src/endpoints";
 import { defaultInstance } from "../../../src/apiService";
 import { internet } from "faker";
-import { updatePassword } from "@shopware-api-client";
+import { updatePassword } from "@shopware-api-wrapper";
 
 const newPassword = internet.password(8);
 const credentials = {

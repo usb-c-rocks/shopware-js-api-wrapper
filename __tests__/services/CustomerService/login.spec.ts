@@ -1,4 +1,4 @@
-import { login } from "@shopware-api-client";
+import { login } from "@shopware-api-wrapper";
 import { getCustomerLoginEndpoint } from "../../../src/endpoints";
 import { defaultInstance } from "../../../src/apiService";
 import { internet } from "faker";

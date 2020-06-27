@@ -1,4 +1,4 @@
-import { logout } from "@shopware-api-client";
+import { logout } from "@shopware-api-wrapper";
 import { getCustomerLogoutEndpoint } from "../../../src/endpoints";
 import { defaultInstance } from "../../../src/apiService";
 

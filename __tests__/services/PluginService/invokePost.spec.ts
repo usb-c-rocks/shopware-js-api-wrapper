@@ -1,5 +1,5 @@
 import { defaultInstance } from "../../../src/apiService";
-import { invokePost, invokeGet } from "@shopware-api-client";
+import { invokePost, invokeGet } from "@shopware-api-wrapper";
 
 jest.mock("../../../src/apiService");
 const mockedApiInstance = defaultInstance as jest.Mocked<

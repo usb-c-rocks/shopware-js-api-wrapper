@@ -1,8 +1,8 @@
 import { getSuggestSearchEndpoint, getSearchEndpoint } from "../endpoints";
 import { defaultInstance, ShopwareApiInstance } from "../apiService";
-import { SearchCriteria } from "@shopware-api-client/commons/interfaces/search/SearchCriteria";
+import { SearchCriteria } from "@shopware-api-wrapper/commons/interfaces/search/SearchCriteria";
 import { convertSearchCriteria, ApiType } from "../helpers/searchConverter";
-import { ProductListingResult } from "@shopware-api-client/commons/interfaces/response/ProductListingResult";
+import { ProductListingResult } from "@shopware-api-wrapper/commons/interfaces/response/ProductListingResult";
 
 /**
  * @throws ClientApiError

@@ -1,4 +1,4 @@
-import { getProducts } from "@shopware-api-client";
+import { getProducts } from "@shopware-api-wrapper";
 import { defaultInstance } from "../../../src/apiService";
 import { Sort } from "../../../src/commons/interfaces/search/SearchCriteria";
 import { PaginationLimit } from "../../../src/commons/interfaces/search/Pagination";
