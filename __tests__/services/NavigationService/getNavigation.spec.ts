@@ -1,4 +1,4 @@
-import { getNavigation } from "@shopware-api-client";
+import {getNavigation, NavigationType} from "@shopware-api-client";
 import { defaultInstance } from "../../../src/apiService";
 
 jest.mock("../../../src/apiService");
@@ -67,7 +67,7 @@ describe("NavigationService - getNavigation", () => {
       },
       depth: 1,
       buildTree: true
-    }, "main-navigation");
+    }, NavigationType.Main);
     expect(mockedPost).toBeCalledTimes(1);
     expect(mockedPost).toBeCalledWith("/store-api/v1/navigation/main-navigation/main-navigation", {
       includes: {

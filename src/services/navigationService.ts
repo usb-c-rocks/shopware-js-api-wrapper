@@ -17,13 +17,20 @@ export interface GetNavigationParams {
 export interface GetNavigationIncludes {
   category: string[];
 }
+
+export enum NavigationType {
+  Main = "main-navigation",
+  Footer = "service-navigation",
+  Service = "footer-navigation"
+}
+
 /**
  * @throws ClientApiError
  * @alpha
  */
 export async function getNavigation(
   params: GetNavigationParams,
-  navigationType: string,
+  navigationType: NavigationType | string = NavigationType.Main,
   contextInstance: ShopwareApiInstance = defaultInstance
 ): Promise<NavigationResponse> {
   params.includes = {
