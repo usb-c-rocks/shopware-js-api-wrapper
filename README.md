@@ -1,14 +1,21 @@
 # shopware-js-api-wrapper
 
-[![npm version][npm-version-src]][npm-version-href]
-[![npm downloads][npm-downloads-src]][npm-downloads-href]
-[![Github Actions CI][github-actions-ci-src]][github-actions-ci-href]
-[![Codecov][codecov-src]][codecov-href]
-[![License][license-src]][license-href]
+Compatibility with Shopware:
 
-> An API wrapper for shopware 6 store and SalesChannel api
+[![shopware-ver](https://img.shields.io/badge/version%20RC1-6.2.0-orange)](https://github.com/shopware/platform/releases/tag/v6.2.0-RC1)
 
-[📖 **Release Notes**](./CHANGELOG.md)
+## Table of Contents
+
+- [Overview](#overview)
+- [Setup](#setup)
+- [Development](#development)
+- [Documentation](#documentation)
+- [Thanks](#thanks)
+- [License](#license)
+
+## Overview
+
+[Shopware](https://www.shopware.com/en/) provides a shop api. The shopware-js-api-wrapper provides a wrapper for this api to use it as functions in js.
 
 ## Setup
 
@@ -40,6 +47,14 @@ yarn link shopware-js-api-wrapper
 1. Clone this repository
 2. Install dependencies using `yarn install` or `npm install`
 3. Start development server using `npm run dev`
+
+## Documentation
+
+// TODO
+
+## Thanks
+
+This project is based on the [shopware-pwa](https://github.com/DivanteLtd/shopware-pwa) api client.
 
 ## License
 
