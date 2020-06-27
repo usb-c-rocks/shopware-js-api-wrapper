@@ -15,7 +15,7 @@ export interface GetNavigationParams {
  * @alpha
  */
 export interface GetNavigationIncludes {
-  category: Array<string>;
+  category: string[];
 }
 /**
  * @throws ClientApiError
@@ -26,6 +26,9 @@ export async function getNavigation(
   navigationType: string,
   contextInstance: ShopwareApiInstance = defaultInstance
 ): Promise<NavigationResponse> {
+  params.includes = {
+    category: ['id', 'name', 'children', 'translated']
+  }
   const resp = await contextInstance.invoke.post(
     getNavigationEndpoint(navigationType),
     params

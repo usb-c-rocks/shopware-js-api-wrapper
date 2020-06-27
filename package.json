@@ -15,7 +15,7 @@
   "types": "lib/src/index.d.ts",
   "scripts": {
     "build": "rollup -c",
-    "dev": "webpack-dev-server --mode development --progress --color",
+    "dev": "rollup -c -w",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "test": "jest"
   },
