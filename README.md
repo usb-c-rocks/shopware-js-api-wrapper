@@ -12,25 +12,28 @@
 
 ## Setup
 
-1. Add `shopware-js-api-wrapper` dependency to your project
+1. Link `shopware-js-api-wrapper` to yarn
 
 ```bash
-yarn add shopware-js-api-wrapper # or npm install shopware-js-api-wrapper
+git clone https://github.com/usb-c-rocks/shopware-js-api-wrapper
+```
+```bash
+cd shopware-js-api-wrapper
+```
+```bash
+yarn link
 ```
 
-2. Add `shopware-js-api-wrapper` to the `modules` section of `nuxt.config.js`
+2. Link `shopware-js-api-wrapper` to your project
 
-```js
-{
-  modules: [
-    // Simple usage
-    'shopware-js-api-wrapper',
-
-    // With options
-    ['shopware-js-api-wrapper', { /* module options */ }]
-  ]
-}
+```bash
+cd yourProjectDirectory
 ```
+```bash
+yarn link shopware-js-api-wrapper
+```
+
+3. Use `shopware-js-api-wrapper` in your project
 
 ## Development
 
