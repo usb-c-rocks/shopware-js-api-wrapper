@@ -4,8 +4,8 @@ import {
   getCheckoutGuestOrderEndpoint,
   getOrderPaymentUrlEndpoint,
 } from "../endpoints";
-import { Order } from "@shopware-api-wrapper/commons/interfaces/models/checkout/order/Order";
-import { GuestOrderParams } from "@shopware-api-wrapper/commons/interfaces/request/GuestOrderParams";
+import { Order } from "@shopware-js-api-wrapper/commons/interfaces/models/checkout/order/Order";
+import { GuestOrderParams } from "@shopware-js-api-wrapper/commons/interfaces/request/GuestOrderParams";
 
 /**
  * Creates an order for logged in users

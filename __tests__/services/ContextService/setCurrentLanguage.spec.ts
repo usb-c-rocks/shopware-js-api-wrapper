@@ -1,5 +1,5 @@
 import { defaultInstance } from "../../../src/apiService";
-import { setCurrentLanguage, update } from "@shopware-api-wrapper";
+import { setCurrentLanguage, update } from "@shopware-js-api-wrapper";
 
 jest.mock("../../../src/apiService");
 const mockedApiInstance = defaultInstance as jest.Mocked<

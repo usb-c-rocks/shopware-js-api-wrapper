@@ -1,4 +1,4 @@
-import { getCustomerAddresses } from "@shopware-api-wrapper";
+import { getCustomerAddresses } from "@shopware-js-api-wrapper";
 import { defaultInstance } from "../../../src/apiService";
 
 jest.mock("../../../src/apiService");

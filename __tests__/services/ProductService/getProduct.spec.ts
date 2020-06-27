@@ -1,4 +1,4 @@
-import { getProduct } from "@shopware-api-wrapper";
+import { getProduct } from "@shopware-js-api-wrapper";
 import { defaultInstance } from "../../../src/apiService";
 
 jest.mock("../../../src/apiService");

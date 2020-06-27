@@ -1,6 +1,6 @@
 import { getCustomerAddressEndpoint } from "../../../src/endpoints";
 import { defaultInstance } from "../../../src/apiService";
-import { deleteCustomerAddress } from "@shopware-api-wrapper";
+import { deleteCustomerAddress } from "@shopware-js-api-wrapper";
 
 jest.mock("../../../src/apiService");
 const mockedApiInstance = defaultInstance as jest.Mocked<

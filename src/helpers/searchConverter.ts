@@ -1,15 +1,15 @@
-import { SearchCriteria } from "@shopware-api-wrapper/commons/interfaces/search/SearchCriteria";
+import { SearchCriteria } from "@shopware-js-api-wrapper/commons/interfaces/search/SearchCriteria";
 import {
   NotFilter,
   MultiFilter,
   RangeFilter,
   EqualsFilter,
   EqualsAnyFilter,
-} from "@shopware-api-wrapper/commons/interfaces/search/SearchFilter";
+} from "@shopware-js-api-wrapper/commons/interfaces/search/SearchFilter";
 import { convertAssociations } from "./convertAssociations";
 import { PaginationLimit } from "../commons/interfaces/search/Pagination";
-import { ShopwareAssociation } from "@shopware-api-wrapper/commons/interfaces/search/Association";
-import { Grouping } from "@shopware-api-wrapper/commons/interfaces/search/Grouping";
+import { ShopwareAssociation } from "@shopware-js-api-wrapper/commons/interfaces/search/Association";
+import { Grouping } from "@shopware-js-api-wrapper/commons/interfaces/search/Grouping";
 import { convertToStoreApiFilters } from "../helpers/convertToStoreApiFilters";
 import { ClientSettings } from "../settings";
 

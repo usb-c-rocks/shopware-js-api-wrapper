@@ -1,5 +1,5 @@
 {
-  "name": "shopware-api-wrapper",
+  "name": "shopware-js-api-wrapper",
   "version": "0.0.0",
   "description": "An API client for shopware 6",
   "license": "MIT",

@@ -1,5 +1,5 @@
 import { address, name, random } from "faker";
-import { createCustomerAddress } from "@shopware-api-wrapper";
+import { createCustomerAddress } from "@shopware-js-api-wrapper";
 import { getCustomerAddressEndpoint } from "../../../src/endpoints";
 import { defaultInstance } from "../../../src/apiService";
 

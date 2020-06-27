@@ -1,9 +1,9 @@
-import { Category } from "@shopware-api-wrapper/commons/interfaces/models/content/category/Category";
+import { Category } from "@shopware-js-api-wrapper/commons/interfaces/models/content/category/Category";
 import { getCategoryEndpoint, getCategoryDetailsEndpoint } from "../endpoints";
 import { convertSearchCriteria } from "../helpers/searchConverter";
-import { SearchResult } from "@shopware-api-wrapper/commons/interfaces/response/SearchResult";
+import { SearchResult } from "@shopware-js-api-wrapper/commons/interfaces/response/SearchResult";
 import { defaultInstance, ShopwareApiInstance } from "../apiService";
-import { SearchCriteria } from "@shopware-api-wrapper/commons/interfaces/search/SearchCriteria";
+import { SearchCriteria } from "@shopware-js-api-wrapper/commons/interfaces/search/SearchCriteria";
 
 /**
  * @throws ClientApiError

@@ -1,4 +1,4 @@
-import { addCartItemQuantity } from "@shopware-api-wrapper";
+import { addCartItemQuantity } from "@shopware-js-api-wrapper";
 import { defaultInstance } from "../../../src/apiService";
 import { random, commerce } from "faker";
 

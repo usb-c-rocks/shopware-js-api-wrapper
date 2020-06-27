@@ -1,5 +1,5 @@
 import { defaultInstance } from "../../../src/apiService";
-import { getSessionContext } from "@shopware-api-wrapper";
+import { getSessionContext } from "@shopware-js-api-wrapper";
 import { SessionContext } from "../../../src/commons/interfaces/response/SessionContext";
 
 jest.mock("../../../src/apiService");

@@ -1,6 +1,6 @@
 import { getCustomerAddressSetDefaultBillingEndpoint } from "../../../src/endpoints";
 import { defaultInstance } from "../../../src/apiService";
-import { setDefaultCustomerBillingAddress } from "@shopware-api-wrapper";
+import { setDefaultCustomerBillingAddress } from "@shopware-js-api-wrapper";
 
 jest.mock("../../../src/apiService");
 const mockedApiInstance = defaultInstance as jest.Mocked<

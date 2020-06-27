@@ -1,4 +1,4 @@
-# shopware-api-wrapper
+# shopware-js-api-wrapper
 
 [![npm version][npm-version-src]][npm-version-href]
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
@@ -12,22 +12,22 @@
 
 ## Setup
 
-1. Add `shopware-api-wrapper` dependency to your project
+1. Add `shopware-js-api-wrapper` dependency to your project
 
 ```bash
-yarn add shopware-api-wrapper # or npm install shopware-api-wrapper
+yarn add shopware-js-api-wrapper # or npm install shopware-js-api-wrapper
 ```
 
-2. Add `shopware-api-wrapper` to the `modules` section of `nuxt.config.js`
+2. Add `shopware-js-api-wrapper` to the `modules` section of `nuxt.config.js`
 
 ```js
 {
   modules: [
     // Simple usage
-    'shopware-api-wrapper',
+    'shopware-js-api-wrapper',
 
     // With options
-    ['shopware-api-wrapper', { /* module options */ }]
+    ['shopware-js-api-wrapper', { /* module options */ }]
   ]
 }
 ```
@@ -45,11 +45,11 @@ yarn add shopware-api-wrapper # or npm install shopware-api-wrapper
 Copyright (c) Lennart Zellmer <lennart+git@zellmer.dev>
 
 <!-- Badges -->
-[npm-version-src]: https://img.shields.io/npm/v/shopware-api-wrapper/latest.svg
-[npm-version-href]: https://npmjs.com/package/shopware-api-wrapper
+[npm-version-src]: https://img.shields.io/npm/v/shopware-js-api-wrapper/latest.svg
+[npm-version-href]: https://npmjs.com/package/shopware-js-api-wrapper
 
-[npm-downloads-src]: https://img.shields.io/npm/dt/shopware-api-wrapper.svg
-[npm-downloads-href]: https://npmjs.com/package/shopware-api-wrapper
+[npm-downloads-src]: https://img.shields.io/npm/dt/shopware-js-api-wrapper.svg
+[npm-downloads-href]: https://npmjs.com/package/shopware-js-api-wrapper
 
 [github-actions-ci-src]: https://github.com//workflows/ci/badge.svg
 [github-actions-ci-href]: https://github.com//actions?query=workflow%3Aci
@@ -57,5 +57,5 @@ Copyright (c) Lennart Zellmer <lennart+git@zellmer.dev>
 [codecov-src]: https://img.shields.io/codecov/c/github/.svg
 [codecov-href]: https://codecov.io/gh/
 
-[license-src]: https://img.shields.io/npm/l/shopware-api-wrapper.svg
-[license-href]: https://npmjs.com/package/shopware-api-wrapper
+[license-src]: https://img.shields.io/npm/l/shopware-js-api-wrapper.svg
+[license-href]: https://npmjs.com/package/shopware-js-api-wrapper

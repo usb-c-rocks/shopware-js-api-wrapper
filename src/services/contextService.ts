@@ -1,4 +1,4 @@
-import { Currency } from "@shopware-api-wrapper/commons/interfaces/models/system/currency/Currency";
+import { Currency } from "@shopware-js-api-wrapper/commons/interfaces/models/system/currency/Currency";
 import { defaultInstance, ShopwareApiInstance } from "../apiService";
 import {
   getContextCurrencyEndpoint,
@@ -13,17 +13,17 @@ import {
   getContextPaymentMethodDetailsEndpoint,
   getContextShippingMethodDetailsEndpoint,
 } from "../endpoints";
-import { Country } from "@shopware-api-wrapper/commons/interfaces/models/system/country/Country";
-import { ShippingMethod } from "@shopware-api-wrapper/commons/interfaces/models/checkout/shipping/ShippingMethod";
-import { PaymentMethod } from "@shopware-api-wrapper/commons/interfaces/models/checkout/payment/PaymentMethod";
-import { Language } from "@shopware-api-wrapper/commons/interfaces/models/framework/language/Language";
-import { Salutation } from "@shopware-api-wrapper/commons/interfaces/models/system/salutation/Salutation";
-import { SearchResult } from "@shopware-api-wrapper/commons/interfaces/response/SearchResult";
-import { UpdateContextParams } from "@shopware-api-wrapper/commons/interfaces/request/UpdateContextParams";
+import { Country } from "@shopware-js-api-wrapper/commons/interfaces/models/system/country/Country";
+import { ShippingMethod } from "@shopware-js-api-wrapper/commons/interfaces/models/checkout/shipping/ShippingMethod";
+import { PaymentMethod } from "@shopware-js-api-wrapper/commons/interfaces/models/checkout/payment/PaymentMethod";
+import { Language } from "@shopware-js-api-wrapper/commons/interfaces/models/framework/language/Language";
+import { Salutation } from "@shopware-js-api-wrapper/commons/interfaces/models/system/salutation/Salutation";
+import { SearchResult } from "@shopware-js-api-wrapper/commons/interfaces/response/SearchResult";
+import { UpdateContextParams } from "@shopware-js-api-wrapper/commons/interfaces/request/UpdateContextParams";
 import {
   ContextTokenResponse,
   SessionContext,
-} from "@shopware-api-wrapper/commons/interfaces/response/SessionContext";
+} from "@shopware-js-api-wrapper/commons/interfaces/response/SessionContext";
 import { extractContextToken } from "../helpers/context";
 
 /**

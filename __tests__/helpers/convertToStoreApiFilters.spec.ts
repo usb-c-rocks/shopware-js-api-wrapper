@@ -1,6 +1,6 @@
 import { convertToStoreApiFilters } from "../../src/helpers/convertToStoreApiFilters";
 
-import { setup } from "@shopware-api-wrapper";
+import { setup } from "@shopware-js-api-wrapper";
 
 describe("SearchConverter - convertToStoreApiFilters", () => {
   beforeEach(() => {

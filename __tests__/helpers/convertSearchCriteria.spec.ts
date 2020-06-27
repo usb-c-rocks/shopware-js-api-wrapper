@@ -10,7 +10,7 @@ import {
   EqualsAnyFilter,
 } from "../../src/commons/interfaces/search/SearchFilter";
 import { PaginationLimit } from "../../src/commons/interfaces/search/Pagination";
-import { config, setup, update } from "@shopware-api-wrapper";
+import { config, setup, update } from "@shopware-js-api-wrapper";
 
 describe("SearchConverter - convertSearchCriteria", () => {
   beforeEach(() => {

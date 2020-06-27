@@ -1,4 +1,4 @@
-import { createOrder, createGuestOrder } from "@shopware-api-wrapper";
+import { createOrder, createGuestOrder } from "@shopware-js-api-wrapper";
 import { defaultInstance } from "../../../src/apiService";
 import { GuestOrderParams } from "../../../src/commons/interfaces/request/GuestOrderParams";
 

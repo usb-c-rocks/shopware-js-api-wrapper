@@ -12,12 +12,12 @@ import {
   getCustomerLoginEndpoint,
   getCustomerOrderEndpoint,
 } from "../endpoints";
-import { Customer } from "@shopware-api-wrapper/commons/interfaces/models/checkout/customer/Customer";
+import { Customer } from "@shopware-js-api-wrapper/commons/interfaces/models/checkout/customer/Customer";
 import { defaultInstance, ShopwareApiInstance } from "../apiService";
-import { CustomerAddress } from "@shopware-api-wrapper/commons/interfaces/models/checkout/customer/CustomerAddress";
-import { CustomerRegistrationParams } from "@shopware-api-wrapper/commons/interfaces/request/CustomerRegistrationParams";
-import { ContextTokenResponse } from "@shopware-api-wrapper/commons/interfaces/response/SessionContext";
-import { Order } from "@shopware-api-wrapper/commons/interfaces/models/checkout/order/Order";
+import { CustomerAddress } from "@shopware-js-api-wrapper/commons/interfaces/models/checkout/customer/CustomerAddress";
+import { CustomerRegistrationParams } from "@shopware-js-api-wrapper/commons/interfaces/request/CustomerRegistrationParams";
+import { ContextTokenResponse } from "@shopware-js-api-wrapper/commons/interfaces/response/SessionContext";
+import { Order } from "@shopware-js-api-wrapper/commons/interfaces/models/checkout/order/Order";
 
 /**
  * @alpha

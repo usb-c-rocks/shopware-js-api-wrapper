@@ -1,4 +1,4 @@
-import { Cart } from "@shopware-api-wrapper/commons/interfaces/models/checkout/cart/Cart";
+import { Cart } from "@shopware-js-api-wrapper/commons/interfaces/models/checkout/cart/Cart";
 import {
   getCheckoutCartEndpoint,
   getCheckoutCartProductEndpoint,
@@ -6,8 +6,8 @@ import {
   getCheckoutCartLineItemEndpoint,
 } from "../endpoints";
 import { defaultInstance, ShopwareApiInstance } from "../apiService";
-import { ContextTokenResponse } from "@shopware-api-wrapper/commons/interfaces/response/SessionContext";
-import { CartItemType } from "@shopware-api-wrapper/commons/interfaces/cart/CartItemType";
+import { ContextTokenResponse } from "@shopware-js-api-wrapper/commons/interfaces/response/SessionContext";
+import { CartItemType } from "@shopware-js-api-wrapper/commons/interfaces/cart/CartItemType";
 
 /**
  * When no sw-context-token given then this method return an empty cart with the new sw-context-token.

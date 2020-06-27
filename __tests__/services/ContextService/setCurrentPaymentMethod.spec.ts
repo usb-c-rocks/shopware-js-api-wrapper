@@ -2,7 +2,7 @@ import { defaultInstance } from "../../../src/apiService";
 import {
   setCurrentPaymentMethod,
   update,
-} from "@shopware-api-wrapper";
+} from "@shopware-js-api-wrapper";
 
 jest.mock("../../../src/apiService");
 const mockedApiInstance = defaultInstance as jest.Mocked<

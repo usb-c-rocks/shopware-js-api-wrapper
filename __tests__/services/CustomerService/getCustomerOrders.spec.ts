@@ -1,4 +1,4 @@
-import { getCustomerOrders } from "@shopware-api-wrapper";
+import { getCustomerOrders } from "@shopware-js-api-wrapper";
 import { getCustomerOrderEndpoint } from "../../../src/endpoints";
 import { defaultInstance } from "../../../src/apiService";
 

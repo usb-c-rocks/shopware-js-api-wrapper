@@ -1,13 +1,13 @@
-import { Pagination } from "@shopware-api-wrapper/commons/interfaces/search/Pagination";
+import { Pagination } from "@shopware-js-api-wrapper/commons/interfaces/search/Pagination";
 import {
   EqualsFilter,
   RangeFilter,
   MultiFilter,
   EqualsAnyFilter,
-} from "@shopware-api-wrapper/commons/interfaces/search/SearchFilter";
-import { Association } from "@shopware-api-wrapper/commons/interfaces/search/Association";
-import { Aggregation } from "@shopware-api-wrapper/commons/interfaces/search/Aggregation";
-import { TotalCountMode } from "@shopware-api-wrapper/commons/interfaces/search/TotalCountMode";
+} from "@shopware-js-api-wrapper/commons/interfaces/search/SearchFilter";
+import { Association } from "@shopware-js-api-wrapper/commons/interfaces/search/Association";
+import { Aggregation } from "@shopware-js-api-wrapper/commons/interfaces/search/Aggregation";
+import { TotalCountMode } from "@shopware-js-api-wrapper/commons/interfaces/search/TotalCountMode";
 
 /**
  * @alpha

@@ -1,4 +1,4 @@
-import { clearCart } from "@shopware-api-wrapper";
+import { clearCart } from "@shopware-js-api-wrapper";
 import { defaultInstance } from "../../../src/apiService";
 import { random } from "faker";
 
