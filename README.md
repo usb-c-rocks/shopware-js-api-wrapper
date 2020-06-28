@@ -28,7 +28,7 @@ git clone https://github.com/usb-c-rocks/shopware-js-api-wrapper
 cd shopware-js-api-wrapper
 ```
 ```bash
-yarn link
+yarn && yarn build && yarn link
 ```
 
 2. Link `shopware-js-api-wrapper` to your project
