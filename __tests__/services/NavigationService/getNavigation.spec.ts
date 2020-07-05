@@ -25,7 +25,7 @@ describe("NavigationService - getNavigation", () => {
               children: [],
               translated: {
                 breadcrumb: [
-                  "USB-C.rocks",
+                  "ROOTNODE",
                   "Food",
                   "Bakery products"
                 ],
@@ -44,7 +44,7 @@ describe("NavigationService - getNavigation", () => {
           ],
           translated: {
             breadcrumb: [
-              "USB-C.rocks",
+              "ROOTNODE",
               "Food"
             ],
             name: "Food",
