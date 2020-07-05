@@ -10,6 +10,11 @@ import { SearchCriteria } from "@shopware-js-api-wrapper/commons/interfaces/sear
 import { SearchResult } from "@shopware-js-api-wrapper/commons/interfaces/response/SearchResult";
 import { convertSearchCriteria, ApiType } from "../helpers/searchConverter";
 import { defaultInstance, ShopwareApiInstance } from "../apiService";
+import {
+  mergeIncludesAndFilters, ProductAggregationOptions,
+  ProductIncludes,
+  ProductSeoFilter
+} from '@shopware-js-api-wrapper/helpers/mergeIncludesAndFilters'
 
 /**
  * Get default amount of products' ids
@@ -42,10 +47,6 @@ export const getProducts = async function (
   return resp.data;
 };
 
-function wait(ms: number) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
 /**
  * Get default amount of products and listing configuration for given category
  *
@@ -57,7 +58,6 @@ export const getCategoryProductsListing = async function (
   searchCriteria?: SearchCriteria,
   contextInstance: ShopwareApiInstance = defaultInstance
 ): Promise<ProductListingResult> {
-  await wait(5000);
   const resp = await contextInstance.invoke.post(
     `${getProductListingEndpoint(categoryId)}`,
     convertSearchCriteria({
@@ -68,6 +68,32 @@ export const getCategoryProductsListing = async function (
   );
   return resp.data;
 };
+
+/**
+ * Get default amount of products and listing configuration for given category
+ *
+ * @throws ClientApiError
+ * @alpha
+ */
+export const getCategoryProductsListingWithIncludes = async function (
+  categoryId: string,
+  productIncludes: ProductIncludes = {},
+  productSeoFilter: ProductSeoFilter = {},
+  productAggregationOptions: ProductAggregationOptions = {},
+  contextInstance: ShopwareApiInstance = defaultInstance
+): Promise<ProductListingResult> {
+  const resp = await contextInstance.invoke.post(
+    `${getProductListingEndpoint(categoryId)}`,
+    mergeIncludesAndFilters(
+      productIncludes,
+      productSeoFilter,
+      productAggregationOptions,
+      contextInstance.config
+    )
+  );
+  return resp.data;
+};
+
 
 /**
  * Get the product with passed productId
