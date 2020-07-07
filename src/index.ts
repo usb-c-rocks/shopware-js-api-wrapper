@@ -29,13 +29,7 @@ export const config: ClientSettings = defaultInstance.config;
  * This method will override existing config. For config update invoke **update** method.
  * @beta
  */
-export const setup: (config?: ClientSettings) => void = defaultInstance.setup;
-
-/**
- * Update current configuration. This will change only provided values.
- * @beta
- */
-export const update: (config?: ClientSettings) => void = defaultInstance.update;
+export const setup: (config: ClientSettings) => void = defaultInstance.setup;
 
 /**
  * @beta

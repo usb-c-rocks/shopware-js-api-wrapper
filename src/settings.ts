@@ -2,19 +2,21 @@
  * @beta
  */
 export interface ClientSettings {
-  endpoint?: string;
-  accessToken?: string;
+  endpoint: string;
+  accessToken: string;
   contextToken?: string;
-  defaultPaginationLimit?: number;
+  paginationLimit?: number;
   timeout?: number;
   languageId?: string;
+  rejectUnauthorized?: boolean;
 }
 
-export const defaultConfig: ClientSettings = {
-  endpoint: "https://shopware6-demo.vuestorefront.io",
-  accessToken: "SWSCVJJET0RQAXFNBMTDZTV1OQ",
+export const clientSettings: ClientSettings = {
+  endpoint: "",
+  accessToken: "",
   contextToken: "",
   languageId: "",
-  defaultPaginationLimit: 10,
+  paginationLimit: 10,
   timeout: 10000, // ms
+  rejectUnauthorized: true
 };

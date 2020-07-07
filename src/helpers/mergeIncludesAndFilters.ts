@@ -36,7 +36,7 @@ export function mergeIncludesAndFilters(
 ): ProductParams {
   // Set limit to default if not specified
   if (!productSeoFilter.limit || productSeoFilter.limit === null) {
-    productSeoFilter.limit = config.defaultPaginationLimit
+    productSeoFilter.limit = config.paginationLimit
   }
   const params: ProductParams = Object.assign(productSeoFilter, productAggregationOptions)
 

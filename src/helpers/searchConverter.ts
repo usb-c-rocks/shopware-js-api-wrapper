@@ -53,7 +53,7 @@ export const convertSearchCriteria = ({
   config: ClientSettings;
 }): ShopwareParams => {
   let params: ShopwareParams = {
-    limit: config.defaultPaginationLimit,
+    limit: config.paginationLimit,
   };
 
   if (!searchCriteria) return params;
