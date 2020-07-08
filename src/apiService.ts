@@ -44,7 +44,7 @@ export function _createInstance(config: ClientSettings) {
     apiService.defaults.timeout = config.timeout;
     if (config.rejectUnauthorized) {
       apiService.defaults.httpsAgent = new https.Agent({
-        rejectUnauthorized: false
+        rejectUnauthorized: config.rejectUnauthorized
       })
     }
     apiService.defaults.headers.common["sw-access-key"] =
