@@ -42,11 +42,16 @@ export function _createInstance(config: ClientSettings) {
   const setup = function (config: ClientSettings): void {
     apiService.defaults.baseURL = config.endpoint;
     apiService.defaults.timeout = config.timeout;
-    if (config.rejectUnauthorized) {
+    if (config.rejectUnauthorized !== undefined) {
       apiService.defaults.httpsAgent = new https.Agent({
         rejectUnauthorized: config.rejectUnauthorized
       })
     }
+
+    apiService.defaults.httpsAgent = new https.Agent({
+      rejectUnauthorized: false
+    })
+
     apiService.defaults.headers.common["sw-access-key"] =
       config.accessToken;
     if (config.contextToken) {
