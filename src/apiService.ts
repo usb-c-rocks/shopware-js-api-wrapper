@@ -1,5 +1,5 @@
-import axios, { AxiosInstance } from "axios";
-// import { createResponseInterceptor, errorInterceptor } from "./interceptors";
+import axios, { AxiosInstance, AxiosResponse, AxiosRequestConfig } from "axios";
+import { createResponseInterceptor, errorInterceptor } from "./interceptors";
 import { ClientSettings, clientSettings } from "./settings";
 import * as https from 'https'
 
@@ -17,6 +17,7 @@ export interface ShopwareApiInstance {
   onConfigChange: (fn: (context: ConfigChangedArgs) => void) => void;
   config: ClientSettings;
   setup: (config: ClientSettings) => void;
+  update: (config?: ClientSettings) => void;
 
   invoke: {
     post: AxiosInstance["post"];
@@ -33,7 +34,27 @@ export interface ShopwareApiInstance {
  */
 export function _createInstance(config: ClientSettings) {
   const callbackMethods: ((context: ConfigChangedArgs) => void)[] = [];
+  let clientConfig: ClientSettings = {};
   const apiService: AxiosInstance = axios.create();
+
+  function reloadConfiguration() {
+    apiService.defaults.baseURL = clientConfig.endpoint;
+    apiService.defaults.timeout = clientConfig.timeout;
+    apiService.defaults.headers.common["sw-access-key"] =
+      clientConfig.accessToken;
+    if (clientConfig.contextToken) {
+      apiService.defaults.headers.common["sw-context-token"] =
+        clientConfig.contextToken;
+    } else {
+      delete apiService.defaults.headers.common["sw-context-token"];
+    }
+    if (clientConfig.languageId) {
+      apiService.defaults.headers.common["sw-language-id"] =
+        clientConfig.languageId;
+    } else {
+      delete apiService.defaults.headers.common["sw-language-id"];
+    }
+  }
 
   function onConfigChange(fn: (context: ConfigChangedArgs) => void): void {
     callbackMethods.push(fn);
@@ -70,6 +91,24 @@ export function _createInstance(config: ClientSettings) {
 
   setup(config);
 
+  const update = function (
+    config: ClientSettings,
+    responseConfig?: AxiosResponse<AxiosRequestConfig>["config"]
+  ): void {
+    clientConfig = Object.assign(clientConfig, config);
+    if (
+      process.env.NODE_ENV !== "production" &&
+      !callbackMethods.length &&
+      responseConfig
+    ) {
+      console.warn(
+        `[shopware-6-api] After calling API method ${responseConfig.url} there is no "onConfigChange" listener. See https://shopware-pwa-docs.vuestorefront.io/landing/fundamentals/security.html#context-awareness`
+      );
+    }
+    callbackMethods.forEach((fn) => fn({ config: clientConfig }));
+    reloadConfiguration();
+  };
+
   const invoke = {
     post: apiService.post,
     put: apiService.put,
@@ -78,10 +117,16 @@ export function _createInstance(config: ClientSettings) {
     delete: apiService.delete,
   };
 
+  apiService.interceptors.response.use(
+    createResponseInterceptor(update),
+    errorInterceptor
+  );
+
   return {
     onConfigChange,
     config: config,
     setup,
+    update,
     invoke,
     defaults: apiService.defaults,
   };
@@ -92,23 +137,27 @@ export function _createInstance(config: ClientSettings) {
  * @beta
  */
 export function createInstance(
-  clientConfig: ClientSettings
+  initialConfig: ClientSettings = {}
 ): ShopwareApiInstance {
   const {
     onConfigChange,
     config,
     setup,
+    update,
     invoke,
     defaults,
-  } = _createInstance(clientConfig);
+  } = _createInstance(initialConfig);
 
   return {
     onConfigChange,
     config,
     setup,
+    update: (config: ClientSettings = {}): void => {
+      update(config);
+    },
     invoke,
     defaults,
   };
 }
 
-export const defaultInstance = createInstance(clientSettings);
+export const defaultInstance = createInstance();
