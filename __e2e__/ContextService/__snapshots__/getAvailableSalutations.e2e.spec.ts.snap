@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`shopware-6-client - E2E - ContextService - getAvailableCountries should test salutations response 1`] = `
+Array [
+  Object {
+    "_uniqueIdentifier": "0e8c291f326d4561846d0267dd8379f7",
+    "apiAlias": "salutation",
+    "createdAt": "2020-04-28T13:55:19+00:00",
+    "displayName": "Mr.",
+    "extensions": Object {
+      "foreignKeys": Object {
+        "apiAlias": "array_struct",
+      },
+    },
+    "id": "0e8c291f326d4561846d0267dd8379f7",
+    "letterName": "Dear Mr.",
+    "salutationKey": "mr",
+    "translated": Object {
+      "displayName": "Mr.",
+      "letterName": "Dear Mr.",
+    },
+    "translations": null,
+    "updatedAt": null,
+    "versionId": null,
+  },
+  Object {
+    "_uniqueIdentifier": "1c2653914df74292a4e857b057a34308",
+    "apiAlias": "salutation",
+    "createdAt": "2020-04-28T13:55:19+00:00",
+    "displayName": "Mrs.",
+    "extensions": Object {
+      "foreignKeys": Object {
+        "apiAlias": "array_struct",
+      },
+    },
+    "id": "1c2653914df74292a4e857b057a34308",
+    "letterName": "Dear Mrs.",
+    "salutationKey": "mrs",
+    "translated": Object {
+      "displayName": "Mrs.",
+      "letterName": "Dear Mrs.",
+    },
+    "translations": null,
+    "updatedAt": null,
+    "versionId": null,
+  },
+  Object {
+    "_uniqueIdentifier": "2a69a6c523034b108a3bc292ef4c8891",
+    "apiAlias": "salutation",
+    "createdAt": "2020-04-28T13:55:19+00:00",
+    "displayName": "Not specified",
+    "extensions": Object {
+      "foreignKeys": Object {
+        "apiAlias": "array_struct",
+      },
+    },
+    "id": "2a69a6c523034b108a3bc292ef4c8891",
+    "letterName": " ",
+    "salutationKey": "not_specified",
+    "translated": Object {
+      "displayName": "Not specified",
+      "letterName": " ",
+    },
+    "translations": null,
+    "updatedAt": null,
+    "versionId": null,
+  },
+]
+`;

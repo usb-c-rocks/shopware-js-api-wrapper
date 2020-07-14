@@ -1,0 +1,104 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`shopware-6-client - E2E - ContextService - getAvailableLanguages should test languages response 1`] = `
+Array [
+  Object {
+    "_uniqueIdentifier": "2fbb5fe2e29a4d70aa5854ce7ce3e20b",
+    "apiAlias": "language",
+    "children": null,
+    "createdAt": "2020-04-28T13:55:19+00:00",
+    "customFields": null,
+    "extensions": Object {
+      "foreignKeys": Object {
+        "apiAlias": "array_struct",
+      },
+    },
+    "id": "2fbb5fe2e29a4d70aa5854ce7ce3e20b",
+    "locale": null,
+    "localeId": "1191585a16d244a1af2873be5f41b595",
+    "name": "English",
+    "parent": null,
+    "parentId": null,
+    "translated": Array [],
+    "translationCode": Object {
+      "_uniqueIdentifier": "1191585a16d244a1af2873be5f41b595",
+      "apiAlias": "locale",
+      "code": "en-GB",
+      "createdAt": "2020-04-28T13:55:19+00:00",
+      "customFields": null,
+      "extensions": Object {
+        "foreignKeys": Object {
+          "apiAlias": "array_struct",
+        },
+        "internal_mapping_storage": Object {
+          "apiAlias": "array_struct",
+        },
+      },
+      "id": "1191585a16d244a1af2873be5f41b595",
+      "languages": null,
+      "name": "English",
+      "territory": "United Kingdom",
+      "translated": Object {
+        "customFields": Array [],
+        "name": "English",
+        "territory": "United Kingdom",
+      },
+      "translations": null,
+      "updatedAt": null,
+      "versionId": null,
+    },
+    "translationCodeId": "1191585a16d244a1af2873be5f41b595",
+    "updatedAt": null,
+    "versionId": null,
+  },
+  Object {
+    "_uniqueIdentifier": "65745beed8564f55bf66575eeb03c36e",
+    "apiAlias": "language",
+    "children": null,
+    "createdAt": "2020-04-28T13:55:19+00:00",
+    "customFields": null,
+    "extensions": Object {
+      "foreignKeys": Object {
+        "apiAlias": "array_struct",
+      },
+    },
+    "id": "65745beed8564f55bf66575eeb03c36e",
+    "locale": null,
+    "localeId": "f07fb9548dc046dd82e6f9e836b2af15",
+    "name": "Deutsch",
+    "parent": null,
+    "parentId": null,
+    "translated": Array [],
+    "translationCode": Object {
+      "_uniqueIdentifier": "f07fb9548dc046dd82e6f9e836b2af15",
+      "apiAlias": "locale",
+      "code": "de-DE",
+      "createdAt": "2020-04-28T13:55:19+00:00",
+      "customFields": null,
+      "extensions": Object {
+        "foreignKeys": Object {
+          "apiAlias": "array_struct",
+        },
+        "internal_mapping_storage": Object {
+          "apiAlias": "array_struct",
+        },
+      },
+      "id": "f07fb9548dc046dd82e6f9e836b2af15",
+      "languages": null,
+      "name": "German",
+      "territory": "Germany",
+      "translated": Object {
+        "customFields": Array [],
+        "name": "German",
+        "territory": "Germany",
+      },
+      "translations": null,
+      "updatedAt": null,
+      "versionId": null,
+    },
+    "translationCodeId": "f07fb9548dc046dd82e6f9e836b2af15",
+    "updatedAt": null,
+    "versionId": null,
+  },
+]
+`;

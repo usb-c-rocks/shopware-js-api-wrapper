@@ -33,6 +33,7 @@ describe("Settings", () => {
     it("should change default endpoint after setup invocation", () => {
       setup({
         endpoint: "https://my-new-endpoint.com",
+        accessToken: "DHSADJKASHKJDHASJKDHKJ",
       });
       expect(config.endpoint).toEqual("https://my-new-endpoint.com");
     });

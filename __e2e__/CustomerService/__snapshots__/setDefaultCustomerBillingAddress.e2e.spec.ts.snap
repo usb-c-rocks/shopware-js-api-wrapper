@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`shopware-6-client - E2E - CustomerService - setDefaultCustomerBillingAddress should return error when deleting not existing billing address 1`] = `
+Object {
+  "message": "Invalid username and/or password.",
+  "statusCode": 401,
+}
+`;
+
+exports[`shopware-6-client - E2E - CustomerService - setDefaultCustomerBillingAddress should set provided address as default billing address 1`] = `
+Object {
+  "data": "mockedCustomerAddressId",
+}
+`;

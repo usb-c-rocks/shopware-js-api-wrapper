@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`shopware-6-client - E2E - ContextService - setCurrentPaymentMethod should get error response when not existing payment method 1`] = `
+Object {
+  "message": Array [
+    Object {
+      "code": "FRAMEWORK__INVALID_UUID",
+      "detail": "Value is not a valid UUID: qwe",
+      "meta": Object {
+        "parameters": Object {
+          "input": "qwe",
+        },
+      },
+      "status": "400",
+      "title": "Bad Request",
+    },
+  ],
+  "statusCode": 400,
+}
+`;
+
+exports[`shopware-6-client - E2E - ContextService - setCurrentPaymentMethod should set 'Cash on Delivery' payment method 1`] = `
+Object {
+  "contextToken": "mockedContextToken",
+}
+`;
