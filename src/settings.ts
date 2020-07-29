@@ -2,8 +2,8 @@
  * @beta
  */
 export interface ClientSettings {
-  endpoint: string;
-  accessToken: string;
+  endpoint?: string; //
+  accessToken?: string; //
   contextToken?: string;
   paginationLimit?: number;
   timeout?: number;
@@ -19,4 +19,7 @@ export const clientSettings: ClientSettings = {
   paginationLimit: 10,
   timeout: 10000, // ms
   rejectUnauthorized: true
+
 };
+
+
