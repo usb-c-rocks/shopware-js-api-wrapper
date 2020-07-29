@@ -33,9 +33,6 @@ export async function getNavigation(
   navigationType: NavigationType | string = NavigationType.Main,
   contextInstance: ShopwareApiInstance = defaultInstance
 ): Promise<NavigationResponse> {
-  params.includes = {
-    category: ['id', 'name', 'children', 'translated']
-  }
   const resp = await contextInstance.invoke.post(
     getNavigationEndpoint(navigationType),
     params
