@@ -60,20 +60,29 @@ export function _createInstance(config: ClientSettings) {
   let clientConfig: ClientSettings = clientSettings;
   const apiService: AxiosInstance = axios.create();
 
-  function reloadConfiguration() {
-    apiService.defaults.baseURL = clientConfig.endpoint;
-    apiService.defaults.timeout = clientConfig.timeout;
-    apiService.defaults.headers.common["sw-access-key"] =
-      clientConfig.accessToken;
-    if (clientConfig.contextToken) {
-      apiService.defaults.headers.common["sw-context-token"] =
-        clientConfig.contextToken;
+  const setup = function (config: ClientSettings): void {
+    reloadConfiguration(config);
+  };
+
+  setup(config);
+
+  function reloadConfiguration(configuration: ClientSettings) {
+    if (configuration.rejectUnauthorized !== undefined) {
+      apiService.defaults.httpsAgent = new https.Agent({
+        rejectUnauthorized: configuration.rejectUnauthorized
+      })
+    }
+
+    apiService.defaults.baseURL = configuration.endpoint;
+    apiService.defaults.timeout = configuration.timeout;
+    apiService.defaults.headers.common["sw-access-key"] = configuration.accessToken;
+    if (configuration.contextToken) {
+      apiService.defaults.headers.common["sw-context-token"] = configuration.contextToken;
     } else {
       delete apiService.defaults.headers.common["sw-context-token"];
     }
-    if (clientConfig.languageId) {
-      apiService.defaults.headers.common["sw-language-id"] =
-        clientConfig.languageId;
+    if (configuration.languageId) {
+      apiService.defaults.headers.common["sw-language-id"] = configuration.languageId;
     } else {
       delete apiService.defaults.headers.common["sw-language-id"];
     }
@@ -82,37 +91,6 @@ export function _createInstance(config: ClientSettings) {
   function onConfigChange(fn: (context: ConfigChangedArgs) => void): void {
     callbackMethods.push(fn);
   }
-
-  const setup = function (config: ClientSettings): void {
-    apiService.defaults.baseURL = config.endpoint;
-    apiService.defaults.timeout = config.timeout;
-    if (config.rejectUnauthorized !== undefined) {
-      apiService.defaults.httpsAgent = new https.Agent({
-        rejectUnauthorized: config.rejectUnauthorized
-      })
-    }
-
-    apiService.defaults.httpsAgent = new https.Agent({
-      rejectUnauthorized: false
-    })
-
-    apiService.defaults.headers.common["sw-access-key"] =
-      config.accessToken;
-    if (config.contextToken) {
-      apiService.defaults.headers.common["sw-context-token"] =
-        config.contextToken;
-    } else {
-      delete apiService.defaults.headers.common["sw-context-token"];
-    }
-    if (config.languageId) {
-      apiService.defaults.headers.common["sw-language-id"] =
-        config.languageId;
-    } else {
-      delete apiService.defaults.headers.common["sw-language-id"];
-    }
-  };
-
-  setup(config);
 
   const update = function (
     config: ClientSettings,
@@ -129,7 +107,7 @@ export function _createInstance(config: ClientSettings) {
       );
     }
     callbackMethods.forEach((fn) => fn({ config: clientConfig }));
-    reloadConfiguration();
+    reloadConfiguration(clientConfig);
   };
 
   const invoke = {
