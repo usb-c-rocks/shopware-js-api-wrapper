@@ -11,7 +11,7 @@ import { PaginationLimit } from "../commons/interfaces/search/Pagination";
 import { ShopwareAssociation } from "@shopware-js-api-wrapper/commons/interfaces/search/Association";
 import { Grouping } from "@shopware-js-api-wrapper/commons/interfaces/search/Grouping";
 import { convertToStoreApiFilters } from "../helpers/convertToStoreApiFilters";
-import { ClientSettings } from "../settings";
+import { ClientSettings } from "../apiService";
 
 export enum ApiType {
   store = "store-api",
