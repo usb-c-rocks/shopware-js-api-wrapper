@@ -13,7 +13,8 @@ import { defaultInstance, ShopwareApiInstance } from "../apiService";
 import {
   mergeIncludesAndFilters, ProductAggregationOptions,
   ProductIncludes,
-  ProductSeoFilter
+  ProductSeoFilter,
+  ProductAssociations
 } from '@shopware-js-api-wrapper/helpers/mergeIncludesAndFilters'
 
 /**
@@ -78,6 +79,7 @@ export const getCategoryProductsListing = async function (
 export const getCategoryProductsListingWithIncludes = async function (
   categoryId: string,
   productIncludes: ProductIncludes = {},
+  productAssociations: ProductAssociations = {},
   productSeoFilter: ProductSeoFilter = {},
   productAggregationOptions: ProductAggregationOptions = {},
   contextInstance: ShopwareApiInstance = defaultInstance
@@ -86,6 +88,7 @@ export const getCategoryProductsListingWithIncludes = async function (
     `${getProductListingEndpoint(categoryId)}`,
     mergeIncludesAndFilters(
       productIncludes,
+      productAssociations,
       productSeoFilter,
       productAggregationOptions,
       contextInstance.config

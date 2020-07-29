@@ -1,6 +1,6 @@
 // See https://docs.shopware.com/en/shopware-platform-dev-en/store-api-guide/products?category=shopware-platform-dev-en/store-api-guide
 
-import { ClientSettings } from '@shopware-js-api-wrapper'
+import { ClientSettings } from '../apiService'
 
 export interface ProductSeoFilter {
   manufacturer?: string;
@@ -24,12 +24,17 @@ export interface ProductIncludes {
   [key: string]: string[]
 }
 
+export interface ProductAssociations {
+  [key: string]: any
+}
+
 export interface ProductParams {
  [key: string]: any
 }
 
 export function mergeIncludesAndFilters(
   productIncludes: ProductIncludes,
+  productAssociations: ProductAssociations,
   productSeoFilter: ProductSeoFilter,
   productAggregationOptions: ProductAggregationOptions,
   config: ClientSettings
@@ -42,6 +47,11 @@ export function mergeIncludesAndFilters(
 
   if (!isEmpty(productIncludes)) {
     params.includes = productIncludes
+  }
+
+  console.log(productAssociations)
+  if (!isEmpty(productAssociations)) {
+    params.associations = productAssociations
   }
 
   return params

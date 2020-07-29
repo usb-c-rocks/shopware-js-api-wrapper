@@ -1,7 +1,6 @@
-import { defaultInstance, ConfigChangedArgs } from "./apiService";
-import { ClientSettings } from "./settings";
-export { ClientSettings } from "./settings";
+import { defaultInstance, ConfigChangedArgs, ClientSettings } from "./apiService";
 export {
+  ClientSettings,
   createInstance,
   ConfigChangedArgs,
   ShopwareApiInstance,
@@ -37,3 +36,4 @@ export const setup: (config: ClientSettings) => void = defaultInstance.setup;
 export const onConfigChange: (
   fn: (context: ConfigChangedArgs) => void
 ) => void = defaultInstance.onConfigChange;
+
