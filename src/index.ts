@@ -1,7 +1,6 @@
-import { defaultInstance, ConfigChangedArgs } from "./apiService";
-import { ClientSettings } from "./settings";
-export { ClientSettings } from "./settings";
+import { defaultInstance, ConfigChangedArgs, ClientSettings } from "./apiService";
 export {
+  ClientSettings,
   createInstance,
   ConfigChangedArgs,
   ShopwareApiInstance,
@@ -29,13 +28,7 @@ export const config: ClientSettings = defaultInstance.config;
  * This method will override existing config. For config update invoke **update** method.
  * @beta
  */
-export const setup: (config?: ClientSettings) => void = defaultInstance.setup;
-
-/**
- * Update current configuration. This will change only provided values.
- * @beta
- */
-export const update: (config?: ClientSettings) => void = defaultInstance.update;
+export const setup: (config: ClientSettings) => void = defaultInstance.setup;
 
 /**
  * @beta
@@ -43,3 +36,4 @@ export const update: (config?: ClientSettings) => void = defaultInstance.update;
 export const onConfigChange: (
   fn: (context: ConfigChangedArgs) => void
 ) => void = defaultInstance.onConfigChange;
+

@@ -1,6 +1,30 @@
 import axios, { AxiosInstance, AxiosResponse, AxiosRequestConfig } from "axios";
+//import axios, { AxiosInstance } from "axios";
 import { createResponseInterceptor, errorInterceptor } from "./interceptors";
-import { ClientSettings, defaultConfig } from "./settings";
+import * as https from 'https'
+
+/**
+ * @beta
+ */
+export interface ClientSettings {
+  endpoint?: string;
+  accessToken?: string;
+  contextToken?: string;
+  paginationLimit?: number;
+  timeout?: number;
+  languageId?: string;
+  rejectUnauthorized?: boolean;
+}
+
+export const clientSettings: ClientSettings = {
+  endpoint: "",
+  accessToken: "",
+  contextToken: "",
+  languageId: "",
+  paginationLimit: 10,
+  timeout: 10000, // ms
+  rejectUnauthorized: true
+};
 
 /**
  * @beta
@@ -15,8 +39,8 @@ export interface ConfigChangedArgs {
 export interface ShopwareApiInstance {
   onConfigChange: (fn: (context: ConfigChangedArgs) => void) => void;
   config: ClientSettings;
-  setup: (config?: ClientSettings) => void;
-  update: (config?: ClientSettings) => void;
+  setup: (config: ClientSettings) => void;
+  update: (config: ClientSettings) => void;
 
   invoke: {
     post: AxiosInstance["post"];
@@ -31,39 +55,40 @@ export interface ShopwareApiInstance {
 /**
  * Internal method for creating new instance, exported only for tests, not exported by package
  */
-export function _createInstance(initialConfig: ClientSettings = {}) {
+export function createInstance(config: ClientSettings) {
   const callbackMethods: ((context: ConfigChangedArgs) => void)[] = [];
-  let clientConfig: ClientSettings = {};
+  let clientConfig: ClientSettings = config;
   const apiService: AxiosInstance = axios.create();
 
-  function reloadConfiguration() {
-    apiService.defaults.baseURL = clientConfig.endpoint;
-    apiService.defaults.timeout = clientConfig.timeout;
-    apiService.defaults.headers.common["sw-access-key"] =
-      clientConfig.accessToken;
-    if (clientConfig.contextToken) {
-      apiService.defaults.headers.common["sw-context-token"] =
-        clientConfig.contextToken;
+  function setConfiguration(configuration: ClientSettings) {
+
+    if (configuration.rejectUnauthorized !== undefined) {
+      apiService.defaults.httpsAgent = new https.Agent({
+        rejectUnauthorized: configuration.rejectUnauthorized
+      })
+    }
+
+    apiService.defaults.baseURL = configuration.endpoint;
+    apiService.defaults.timeout = configuration.timeout;
+    apiService.defaults.headers.common["sw-access-key"] = configuration.accessToken;
+    if (configuration.contextToken) {
+      apiService.defaults.headers.common["sw-context-token"] = configuration.contextToken;
     } else {
       delete apiService.defaults.headers.common["sw-context-token"];
     }
-    if (clientConfig.languageId) {
-      apiService.defaults.headers.common["sw-language-id"] =
-        clientConfig.languageId;
+    if (configuration.languageId) {
+      apiService.defaults.headers.common["sw-language-id"] = configuration.languageId;
     } else {
       delete apiService.defaults.headers.common["sw-language-id"];
     }
   }
 
-  function onConfigChange(fn: (context: ConfigChangedArgs) => void): void {
-    callbackMethods.push(fn);
-  }
-
-  const setup = function (config: ClientSettings = {}): void {
-    clientConfig = Object.assign(clientConfig, defaultConfig, config);
-    reloadConfiguration();
+  const setup = function (config: ClientSettings): void {
+    clientConfig = Object.assign(clientConfig, config);
+    setConfiguration(config);
   };
-  setup(initialConfig);
+
+  setup(clientConfig);
 
   const update = function (
     config: ClientSettings,
@@ -76,12 +101,22 @@ export function _createInstance(initialConfig: ClientSettings = {}) {
       responseConfig
     ) {
       console.warn(
-        `[shopware-6-api] After calling API method ${responseConfig.url} there is no "onConfigChange" listener. See https://shopware-pwa-docs.vuestorefront.io/landing/fundamentals/#context-awareness`
+        `[shopware-6-api] After calling API method ${responseConfig.url} there is no "onConfigChange" listener. See https://shopware-pwa-docs.vuestorefront.io/landing/fundamentals/security.html#context-awareness`
       );
     }
     callbackMethods.forEach((fn) => fn({ config: clientConfig }));
-    reloadConfiguration();
+    setConfiguration(clientConfig);
   };
+
+  apiService.interceptors.response.use(
+    createResponseInterceptor(update),
+    errorInterceptor
+  );
+
+  function onConfigChange(fn: (context: ConfigChangedArgs) => void): void {
+    callbackMethods.push(fn);
+  }
+
 
   const invoke = {
     post: apiService.post,
@@ -91,10 +126,6 @@ export function _createInstance(initialConfig: ClientSettings = {}) {
     delete: apiService.delete,
   };
 
-  apiService.interceptors.response.use(
-    createResponseInterceptor(update),
-    errorInterceptor
-  );
 
   return {
     onConfigChange,
@@ -106,32 +137,4 @@ export function _createInstance(initialConfig: ClientSettings = {}) {
   };
 }
 
-/**
- *
- * @beta
- */
-export function createInstance(
-  initialConfig: ClientSettings = {}
-): ShopwareApiInstance {
-  const {
-    onConfigChange,
-    config,
-    setup,
-    update,
-    invoke,
-    defaults,
-  } = _createInstance(initialConfig);
-
-  return {
-    onConfigChange,
-    config,
-    setup,
-    update: (config: ClientSettings = {}): void => {
-      update(config);
-    },
-    invoke,
-    defaults,
-  };
-}
-
-export const defaultInstance = createInstance();
+export const defaultInstance = createInstance(clientSettings);

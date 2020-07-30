@@ -11,5 +11,6 @@ export default {
   plugins: [
     typescript(),
     typescriptPaths()],
+  external: [ 'axios', 'https' ]
 };
 
