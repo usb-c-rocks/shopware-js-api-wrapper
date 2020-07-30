@@ -57,7 +57,7 @@ export interface ShopwareApiInstance {
  */
 export function createInstance(config: ClientSettings) {
   const callbackMethods: ((context: ConfigChangedArgs) => void)[] = [];
-  let clientConfig: ClientSettings = clientSettings;
+  let clientConfig: ClientSettings = config;
   const apiService: AxiosInstance = axios.create();
 
   function setConfiguration(configuration: ClientSettings) {
@@ -84,10 +84,11 @@ export function createInstance(config: ClientSettings) {
   }
 
   const setup = function (config: ClientSettings): void {
+    clientConfig = Object.assign(clientConfig, config);
     setConfiguration(config);
   };
 
-  setup(config);
+  setup(clientConfig);
 
   const update = function (
     config: ClientSettings,
@@ -128,7 +129,7 @@ export function createInstance(config: ClientSettings) {
 
   return {
     onConfigChange,
-    config: config,
+    config: clientConfig,
     setup,
     update,
     invoke,
