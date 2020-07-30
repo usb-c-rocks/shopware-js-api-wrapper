@@ -1,14 +1,14 @@
 import axios, { AxiosInstance, AxiosResponse, AxiosRequestConfig } from "axios";
+//import axios, { AxiosInstance } from "axios";
 import { createResponseInterceptor, errorInterceptor } from "./interceptors";
-
 import * as https from 'https'
 
 /**
  * @beta
  */
 export interface ClientSettings {
-  endpoint: string;
-  accessToken: string;
+  endpoint?: string;
+  accessToken?: string;
   contextToken?: string;
   paginationLimit?: number;
   timeout?: number;
@@ -40,7 +40,7 @@ export interface ShopwareApiInstance {
   onConfigChange: (fn: (context: ConfigChangedArgs) => void) => void;
   config: ClientSettings;
   setup: (config: ClientSettings) => void;
-  update: (config?: ClientSettings) => void;
+  update: (config: ClientSettings) => void;
 
   invoke: {
     post: AxiosInstance["post"];
@@ -55,18 +55,13 @@ export interface ShopwareApiInstance {
 /**
  * Internal method for creating new instance, exported only for tests, not exported by package
  */
-export function _createInstance(config: ClientSettings) {
+export function createInstance(config: ClientSettings) {
   const callbackMethods: ((context: ConfigChangedArgs) => void)[] = [];
   let clientConfig: ClientSettings = clientSettings;
   const apiService: AxiosInstance = axios.create();
 
-  const setup = function (config: ClientSettings): void {
-    reloadConfiguration(config);
-  };
+  function setConfiguration(configuration: ClientSettings) {
 
-  setup(config);
-
-  function reloadConfiguration(configuration: ClientSettings) {
     if (configuration.rejectUnauthorized !== undefined) {
       apiService.defaults.httpsAgent = new https.Agent({
         rejectUnauthorized: configuration.rejectUnauthorized
@@ -88,9 +83,11 @@ export function _createInstance(config: ClientSettings) {
     }
   }
 
-  function onConfigChange(fn: (context: ConfigChangedArgs) => void): void {
-    callbackMethods.push(fn);
-  }
+  const setup = function (config: ClientSettings): void {
+    setConfiguration(config);
+  };
+
+  setup(config);
 
   const update = function (
     config: ClientSettings,
@@ -107,8 +104,18 @@ export function _createInstance(config: ClientSettings) {
       );
     }
     callbackMethods.forEach((fn) => fn({ config: clientConfig }));
-    reloadConfiguration(clientConfig);
+    setConfiguration(clientConfig);
   };
+
+  apiService.interceptors.response.use(
+    createResponseInterceptor(update),
+    errorInterceptor
+  );
+
+  function onConfigChange(fn: (context: ConfigChangedArgs) => void): void {
+    callbackMethods.push(fn);
+  }
+
 
   const invoke = {
     post: apiService.post,
@@ -118,10 +125,6 @@ export function _createInstance(config: ClientSettings) {
     delete: apiService.delete,
   };
 
-  apiService.interceptors.response.use(
-    createResponseInterceptor(update),
-    errorInterceptor
-  );
 
   return {
     onConfigChange,
@@ -133,32 +136,4 @@ export function _createInstance(config: ClientSettings) {
   };
 }
 
-/**
- *
- * @beta
- */
-export function createInstance(
-  initialConfig: ClientSettings = clientSettings
-): ShopwareApiInstance {
-  const {
-    onConfigChange,
-    config,
-    setup,
-    update,
-    invoke,
-    defaults,
-  } = _createInstance(initialConfig);
-
-  return {
-    onConfigChange,
-    config,
-    setup,
-    update: (config: ClientSettings = clientSettings): void => {
-      update(config);
-    },
-    invoke,
-    defaults,
-  };
-}
-
-export const defaultInstance = createInstance();
+export const defaultInstance = createInstance(clientSettings);
