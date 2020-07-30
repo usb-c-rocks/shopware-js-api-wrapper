@@ -137,4 +137,4 @@ export function createInstance(config: ClientSettings) {
   };
 }
 
-export const defaultInstance = createInstance(clientSettings);
+export const defaultInstance = createInstance(clientSettings); 
