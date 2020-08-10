@@ -49,7 +49,6 @@ export function mergeIncludesAndFilters(
     params.includes = productIncludes
   }
 
-  console.log(productAssociations)
   if (!isEmpty(productAssociations)) {
     params.associations = productAssociations
   }
