@@ -1,13 +1,14 @@
-import axios, { AxiosInstance } from "axios";
-// import { createResponseInterceptor, errorInterceptor } from "./interceptors";
+import axios, { AxiosInstance, AxiosResponse, AxiosRequestConfig } from "axios";
+//import axios, { AxiosInstance } from "axios";
+import { createResponseInterceptor, errorInterceptor } from "./interceptors";
 import * as https from 'https'
 
 /**
  * @beta
  */
 export interface ClientSettings {
-  endpoint: string;
-  accessToken: string;
+  endpoint?: string;
+  accessToken?: string;
   contextToken?: string;
   paginationLimit?: number;
   timeout?: number;
@@ -25,7 +26,6 @@ export const clientSettings: ClientSettings = {
   rejectUnauthorized: true
 };
 
-
 /**
  * @beta
  */
@@ -40,6 +40,7 @@ export interface ShopwareApiInstance {
   onConfigChange: (fn: (context: ConfigChangedArgs) => void) => void;
   config: ClientSettings;
   setup: (config: ClientSettings) => void;
+  update: (config: ClientSettings) => void;
 
   invoke: {
     post: AxiosInstance["post"];
@@ -54,44 +55,68 @@ export interface ShopwareApiInstance {
 /**
  * Internal method for creating new instance, exported only for tests, not exported by package
  */
-export function _createInstance(config: ClientSettings) {
+export function createInstance(config: ClientSettings) {
   const callbackMethods: ((context: ConfigChangedArgs) => void)[] = [];
+  let clientConfig: ClientSettings = config;
   const apiService: AxiosInstance = axios.create();
+
+  function setConfiguration(configuration: ClientSettings) {
+
+    if (configuration.rejectUnauthorized !== undefined) {
+      apiService.defaults.httpsAgent = new https.Agent({
+        rejectUnauthorized: configuration.rejectUnauthorized
+      })
+    }
+
+    apiService.defaults.baseURL = configuration.endpoint;
+    apiService.defaults.timeout = configuration.timeout;
+    apiService.defaults.headers.common["sw-access-key"] = configuration.accessToken;
+    if (configuration.contextToken) {
+      apiService.defaults.headers.common["sw-context-token"] = configuration.contextToken;
+    } else {
+      delete apiService.defaults.headers.common["sw-context-token"];
+    }
+    if (configuration.languageId) {
+      apiService.defaults.headers.common["sw-language-id"] = configuration.languageId;
+    } else {
+      delete apiService.defaults.headers.common["sw-language-id"];
+    }
+  }
+
+  const setup = function (config: ClientSettings): void {
+    clientConfig = Object.assign(clientConfig, config);
+    setConfiguration(config);
+  };
+
+  setup(clientConfig);
+
+  const update = function (
+    config: ClientSettings,
+    responseConfig?: AxiosResponse<AxiosRequestConfig>["config"]
+  ): void {
+    clientConfig = Object.assign(clientConfig, config);
+    if (
+      process.env.NODE_ENV !== "production" &&
+      !callbackMethods.length &&
+      responseConfig
+    ) {
+      console.warn(
+        `[shopware-6-api] After calling API method ${responseConfig.url} there is no "onConfigChange" listener. See https://shopware-pwa-docs.vuestorefront.io/landing/fundamentals/security.html#context-awareness`
+      );
+    }
+    callbackMethods.forEach((fn) => fn({ config: clientConfig }));
+    setConfiguration(clientConfig);
+  };
+
+  apiService.interceptors.response.use(
+    createResponseInterceptor(update),
+    errorInterceptor
+  );
 
   function onConfigChange(fn: (context: ConfigChangedArgs) => void): void {
     callbackMethods.push(fn);
   }
 
-  const setup = function (config: ClientSettings): void {
-    apiService.defaults.baseURL = config.endpoint;
-    apiService.defaults.timeout = config.timeout;
-    if (config.rejectUnauthorized !== undefined) {
-      apiService.defaults.httpsAgent = new https.Agent({
-        rejectUnauthorized: config.rejectUnauthorized
-      })
-    }
-
-    apiService.defaults.httpsAgent = new https.Agent({
-      rejectUnauthorized: false
-    })
-
-    apiService.defaults.headers.common["sw-access-key"] =
-      config.accessToken;
-    if (config.contextToken) {
-      apiService.defaults.headers.common["sw-context-token"] =
-        config.contextToken;
-    } else {
-      delete apiService.defaults.headers.common["sw-context-token"];
-    }
-    if (config.languageId) {
-      apiService.defaults.headers.common["sw-language-id"] =
-        config.languageId;
-    } else {
-      delete apiService.defaults.headers.common["sw-language-id"];
-    }
-  };
-
-  setup(config);
 
   const invoke = {
     post: apiService.post,
@@ -101,37 +126,15 @@ export function _createInstance(config: ClientSettings) {
     delete: apiService.delete,
   };
 
+
   return {
     onConfigChange,
-    config: config,
+    config: clientConfig,
     setup,
+    update,
     invoke,
     defaults: apiService.defaults,
   };
 }
 
-/**
- *
- * @beta
- */
-export function createInstance(
-  clientConfig: ClientSettings
-): ShopwareApiInstance {
-  const {
-    onConfigChange,
-    config,
-    setup,
-    invoke,
-    defaults,
-  } = _createInstance(clientConfig);
-
-  return {
-    onConfigChange,
-    config,
-    setup,
-    invoke,
-    defaults,
-  };
-}
-
-export const defaultInstance = createInstance(clientSettings);
+export const defaultInstance = createInstance(clientSettings); 
